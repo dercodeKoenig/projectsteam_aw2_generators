@@ -20,8 +20,8 @@ import static ProjectSteamAW2Generators.Registry.ENTITY_WATERWHEEL_GENERATOR;
 public class EntityWaterWheelGenerator extends BlockEntity implements INetworkTagReceiver, IMechanicalBlockProvider {
 
     public static double defaultFriction = 1;
-    public static double maxForceMultiplier = 30;
-    public static double k = 50;
+    public static double maxForceMultiplier = 100;
+    public static double k = 100;
 
     double myFriction = 1;
     double myInertia = 10;
@@ -134,7 +134,7 @@ public class EntityWaterWheelGenerator extends BlockEntity implements INetworkTa
         if(!canRun)myFriction = 3000;
         else myFriction = defaultFriction;
 
-            myForce =  outputForce* maxForceMultiplier - k*Math.abs(outputForce) * myMechanicalBlock.internalVelocity;
+        myForce =  outputForce* maxForceMultiplier - k*Math.abs(outputForce) * myMechanicalBlock.internalVelocity;
     }
 
     public static <T extends BlockEntity> void tick(Level level, BlockPos blockPos, BlockState blockState, T t) {

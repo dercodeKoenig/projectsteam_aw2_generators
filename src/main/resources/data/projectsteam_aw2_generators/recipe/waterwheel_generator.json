@@ -1,19 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " F ",
-    "GCG",
-    "   "
+    "PSP",
+    "SAS",
+    "PSP"
   ],
   "key": {
-    "F": {
-      "tag": "projectsteam:wooden_flywheel"
+    "P": {
+      "tag": "minecraft:planks"
     },
-    "C": {
-      "item": "projectsteam:casing"
+    "A": {
+      "item": "projectsteam:wooden_axle"
     },
-    "G": {
-      "item": "projectsteam:wooden_gear"
+    "S": {
+      "item": "minecraft:stick"
     }
   },
   "result": {
