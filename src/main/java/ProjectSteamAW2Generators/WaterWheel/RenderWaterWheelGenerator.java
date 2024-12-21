@@ -15,6 +15,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.phys.AABB;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 import org.joml.Quaternionf;
@@ -56,6 +57,12 @@ public class RenderWaterWheelGenerator implements BlockEntityRenderer<EntityWate
     public RenderWaterWheelGenerator(BlockEntityRendererProvider.Context c) {
         super();
     }
+
+    public AABB getRenderBoundingBox(EntityWaterWheelGenerator tile) {
+
+        return new AABB(tile.getBlockPos()).inflate(1);
+    }
+
 
     @Override
     public void render(EntityWaterWheelGenerator tile, float partialTick, PoseStack stack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
