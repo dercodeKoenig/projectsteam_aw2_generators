@@ -32,7 +32,7 @@ public class RenderWaterWheelGenerator implements BlockEntityRenderer<EntityWate
 
     static {
         try {
-            model = new WavefrontObject(ResourceLocation.fromNamespaceAndPath("projectsteam_aw2_generators", "objmodels/waterwheel.obj"));
+            model = new WavefrontObject(ResourceLocation.fromNamespaceAndPath("projectsteam_aw2_generators", "objmodels/waterwheel_generator.obj"));
         } catch (ModelFormatException ex) {
             throw new RuntimeException(ex);
         }
@@ -67,18 +67,23 @@ public class RenderWaterWheelGenerator implements BlockEntityRenderer<EntityWate
             Matrix4f m1 = new Matrix4f(RenderSystem.getModelViewMatrix());
             m1 = m1.mul(stack.last().pose());
             m1 = m1.translate(0.5f, 0.5f, 0.5f);
+            float rotationMultiplier = 0;
 
             if (facing == Direction.WEST) {
-                m1 = m1.rotate(new Quaternionf().fromAxisAngleDeg(0f, 1.0f, 0, 270f));
+                m1 = m1.rotate(new Quaternionf().fromAxisAngleDeg(0f, 1.0f, 0, 90f));
+                rotationMultiplier = 1;
             }
             if (facing == Direction.EAST) {
-                m1 = m1.rotate(new Quaternionf().fromAxisAngleDeg(0f, 1.0f, 0, 90f));
+                m1 = m1.rotate(new Quaternionf().fromAxisAngleDeg(0f, 1.0f, 0, 270f));
+                rotationMultiplier = -1;
             }
             if (facing == Direction.SOUTH) {
-                m1 = m1.rotate(new Quaternionf().fromAxisAngleDeg(0f, 1.0f, 0, 0f));
+                m1 = m1.rotate(new Quaternionf().fromAxisAngleDeg(0f, 1.0f, 0, 180f));
+                rotationMultiplier = -1;
             }
             if (facing == Direction.NORTH) {
-                m1 = m1.rotate(new Quaternionf().fromAxisAngleDeg(0f, 1.0f, 0, 180f));
+                m1 = m1.rotate(new Quaternionf().fromAxisAngleDeg(0f, 1.0f, 0, 0f));
+                rotationMultiplier = 1;
             }
 
 
@@ -91,7 +96,8 @@ public class RenderWaterWheelGenerator implements BlockEntityRenderer<EntityWate
             RenderSystem.setShaderTexture(0, tex);
 
             Matrix4f m2 = new Matrix4f(m1);
-            m2 = m2.rotate(new Quaternionf().fromAxisAngleDeg(0f, 0f, 1f, (float) (tile.myMechanicalBlock.currentRotation + rad_to_degree(tile.myMechanicalBlock.internalVelocity) / TPS * partialTick)));
+            m2 = m2.translate(0,0,-0.2f);
+            m2 = m2.rotate(new Quaternionf().fromAxisAngleDeg(0f, 0f, rotationMultiplier, (float) (tile.myMechanicalBlock.currentRotation + rad_to_degree(tile.myMechanicalBlock.internalVelocity) / TPS * partialTick)));
             shader.setDefaultUniforms(VertexFormat.Mode.TRIANGLES, m2, RenderSystem.getProjectionMatrix(), Minecraft.getInstance().getWindow());
             shader.getUniform("NormalMatrix").set((new Matrix3f(m2)).invert().transpose());
             shader.getUniform("UV2").set(packedLight & '\uffff', packedLight >> 16 & '\uffff');

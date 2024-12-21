@@ -9,7 +9,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd C:/Users/Dr-Hc/Desktop/projectsteam_aw2_generators/src/main/resources/assets/projectsteam_aw2_generators/textures/block/water_wheel_genator.png
+map_Kd projectsteam_aw2_generators:block/water_wheel_generator
 
 newmtl Material.001
 Ns 0.000000
@@ -19,4 +19,4 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 1
-map_Kd C:/Users/Dr-Hc/Desktop/project_steam/src/main/resources/assets/projectsteam/textures/block/planks.png
+map_Kd projectsteam:block/planks

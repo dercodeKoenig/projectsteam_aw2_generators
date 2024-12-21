@@ -91,7 +91,7 @@ public class EntityWaterWheelGenerator extends BlockEntity implements INetworkTa
 
     @Override
     public AbstractMechanicalBlock getMechanicalBlock(Direction direction) {
-        if (direction.getAxis() == getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING).getAxis()) {
+        if (direction == getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING)) {
             return myMechanicalBlock;
         }
         return null;

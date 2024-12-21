@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "projectsteam_crafting:spinning_wheel"
+          "name": "projectsteam_aw2_generators:waterwheel_generator"
         }
       ]
     }
