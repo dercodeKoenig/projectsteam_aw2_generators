@@ -1,6 +1,6 @@
 package ProjectSteamAW2Generators;
 
-import ProjectSteamAW2Generators.WaterWheel.RenderWaterWheel;
+import ProjectSteamAW2Generators.WaterWheel.RenderWaterWheelGenerator;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -15,8 +15,8 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import java.io.IOException;
 
 import static ProjectSteam.Registry.PROJECTSTEAM_CREATIVETAB;
-import static ProjectSteamAW2Generators.Registry.ENTITY_WATERWHEEL;
-import static ProjectSteamAW2Generators.Registry.WATERWHEEL;
+import static ProjectSteamAW2Generators.Registry.ENTITY_WATERWHEEL_GENERATOR;
+import static ProjectSteamAW2Generators.Registry.WATERWHEEL_GENERATOR;
 
 
 
@@ -25,8 +25,6 @@ public class ProjectSteamAW2Generators {
 
     public ProjectSteamAW2Generators(IEventBus modEventBus, ModContainer modContaine) throws IOException {
         //modEventBus.register(this);
-
-
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::loadComplete);
         modEventBus.addListener(this::onClientSetup);
@@ -42,7 +40,7 @@ public class ProjectSteamAW2Generators {
 
 
     public void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerBlockEntityRenderer(ENTITY_WATERWHEEL.get(), RenderWaterWheel::new);
+        event.registerBlockEntityRenderer(ENTITY_WATERWHEEL_GENERATOR.get(), RenderWaterWheelGenerator::new);
     }
 
     public void registerNetworkStuff(RegisterPayloadHandlersEvent event) {
@@ -50,7 +48,7 @@ public class ProjectSteamAW2Generators {
 
     private void addCreative(BuildCreativeModeTabContentsEvent e) {
         if (e.getTab().equals(PROJECTSTEAM_CREATIVETAB.get())) {
-            e.accept(WATERWHEEL.get());
+            e.accept(WATERWHEEL_GENERATOR.get());
         }
     }
 

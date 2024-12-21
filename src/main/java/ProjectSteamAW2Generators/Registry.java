@@ -1,7 +1,7 @@
 package ProjectSteamAW2Generators;
 
-import ProjectSteamAW2Generators.WaterWheel.BlockWaterWheel;
-import ProjectSteamAW2Generators.WaterWheel.EntityWaterWheel;
+import ProjectSteamAW2Generators.WaterWheel.BlockWaterWheelGenerator;
+import ProjectSteamAW2Generators.WaterWheel.EntityWaterWheelGenerator;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -20,18 +20,18 @@ public class Registry {
         return ITEMS.register(name,() -> new BlockItem(b.get(), new Item.Properties()));
     }
 
-    public static final Supplier<Block> WATERWHEEL = BLOCKS.register(
-            "waterwheel",
-            () -> new BlockWaterWheel()
+    public static final Supplier<Block> WATERWHEEL_GENERATOR = BLOCKS.register(
+            "waterwheel_generator",
+            () -> new BlockWaterWheelGenerator()
     );
-    public static final Supplier<BlockEntityType<EntityWaterWheel>> ENTITY_WATERWHEEL = BLOCK_ENTITIES.register(
-            "entity_waterwheel",
-            () -> BlockEntityType.Builder.of(EntityWaterWheel::new, WATERWHEEL.get()).build(null)
+    public static final Supplier<BlockEntityType<EntityWaterWheelGenerator>> ENTITY_WATERWHEEL_GENERATOR = BLOCK_ENTITIES.register(
+            "entity_waterwheel_generator",
+            () -> BlockEntityType.Builder.of(EntityWaterWheelGenerator::new, WATERWHEEL_GENERATOR.get()).build(null)
     );
 
 
     static {
-        registerBlockItem("waterwheel", WATERWHEEL);
+        registerBlockItem("waterwheel_generator", WATERWHEEL_GENERATOR);
     }
 
     public static void register(IEventBus modBus) {

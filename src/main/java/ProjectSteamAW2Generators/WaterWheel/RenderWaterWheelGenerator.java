@@ -22,7 +22,7 @@ import org.joml.Quaternionf;
 import static ProjectSteam.Static.*;
 import static net.minecraft.client.renderer.RenderStateShard.*;
 
-public class RenderWaterWheel implements BlockEntityRenderer<EntityWaterWheel> {
+public class RenderWaterWheelGenerator implements BlockEntityRenderer<EntityWaterWheelGenerator> {
 
     static WavefrontObject model;
     static ResourceLocation tex = ResourceLocation.fromNamespaceAndPath("projectsteam", "textures/block/planks.png");
@@ -53,15 +53,15 @@ public class RenderWaterWheel implements BlockEntityRenderer<EntityWaterWheel> {
         byteBuffer.close();
     }
 
-    public RenderWaterWheel(BlockEntityRendererProvider.Context c) {
+    public RenderWaterWheelGenerator(BlockEntityRendererProvider.Context c) {
         super();
     }
 
     @Override
-    public void render(EntityWaterWheel tile, float partialTick, PoseStack stack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+    public void render(EntityWaterWheelGenerator tile, float partialTick, PoseStack stack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         if (tile.isRemoved()) return;
         BlockState state = tile.getBlockState();
-        if (state.getBlock() instanceof BlockWaterWheel) {
+        if (state.getBlock() instanceof BlockWaterWheelGenerator) {
             Direction facing = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
 
             Matrix4f m1 = new Matrix4f(RenderSystem.getModelViewMatrix());

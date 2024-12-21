@@ -1,35 +1,21 @@
 package ProjectSteamAW2Generators.WaterWheel;
 
-import ARLib.gui.GuiHandlerBlockEntity;
-import ARLib.gui.IGuiHandler;
-import ARLib.gui.modules.guiModuleItemHandlerSlot;
-import ARLib.gui.modules.guiModulePlayerInventorySlot;
 import ARLib.network.INetworkTagReceiver;
-import ARLib.utils.BlockEntityItemStackHandler;
-import ARLib.utils.InventoryUtils;
-import ARLib.utils.recipePart;
 import ProjectSteam.Core.AbstractMechanicalBlock;
 import ProjectSteam.Core.IMechanicalBlockProvider;
-import ProjectSteam.Static;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.neoforged.neoforge.items.IItemHandler;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static ProjectSteamAW2Generators.Registry.ENTITY_WATERWHEEL;
+import static ProjectSteamAW2Generators.Registry.ENTITY_WATERWHEEL_GENERATOR;
 
 
-public class EntityWaterWheel extends BlockEntity implements INetworkTagReceiver, IMechanicalBlockProvider {
+public class EntityWaterWheelGenerator extends BlockEntity implements INetworkTagReceiver, IMechanicalBlockProvider {
 
     double myFriction = 1;
     double myInertia = 20;
@@ -63,8 +49,8 @@ public class EntityWaterWheel extends BlockEntity implements INetworkTagReceiver
         }
     };
 
-    public EntityWaterWheel(BlockPos pos, BlockState blockState) {
-        super(ENTITY_WATERWHEEL.get(), pos, blockState);
+    public EntityWaterWheelGenerator(BlockPos pos, BlockState blockState) {
+        super(ENTITY_WATERWHEEL_GENERATOR.get(), pos, blockState);
     }
 
     @Override
@@ -78,7 +64,7 @@ public class EntityWaterWheel extends BlockEntity implements INetworkTagReceiver
     }
 
     public static <T extends BlockEntity> void tick(Level level, BlockPos blockPos, BlockState blockState, T t) {
-        ((EntityWaterWheel) t).tick();
+        ((EntityWaterWheelGenerator) t).tick();
     }
 
     @Override
